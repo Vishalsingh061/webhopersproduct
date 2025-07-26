@@ -1,36 +1,30 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard';
-import { useDispatch, useSelector } from 'react-redux';
-import { setProducts } from '../redux/slices/productSlice';
 
 const ProductList = () => {
-    const dispatch = useDispatch();
-    const { products, selectedCategory, selectedRating } = useSelector(state => state.products);
-
-    useEffect(() => {
-        fetch('/products.json')
-            .then(res => res.json())
-            .then(data => dispatch(setProducts(data)));
-    }, [dispatch]);
+    const { products, selectedCategory, selectedRating, selectedPriceRange } = useSelector(state => state.products);
 
     const filteredProducts = products.filter(product => {
-        const categoryMatch = selectedCategory ? product.category === selectedCategory : true;
-        const ratingMatch = selectedRating ? product.rating >= selectedRating : true;
-        return categoryMatch && ratingMatch;
+        const price = Number(product.price);
+        const minPrice = selectedPriceRange[0];
+        const maxPrice = selectedPriceRange[1];
+
+        const matchCategory = selectedCategory ? product.category === selectedCategory : true;
+        const matchRating = selectedRating ? product.rating >= selectedRating : true;
+        const matchPrice = price >= minPrice && price <= maxPrice;
+
+        return matchCategory && matchRating && matchPrice;
     });
 
     return (
-        <div className="flex-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {filteredProducts.length === 0 ? (
-                <div className="flex items-center justify-center h-64 bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700">
-                    <p className="text-gray-500 dark:text-gray-400 text-lg">No products found matching your filters.</p>
-                </div>
+                <p className="text-lg text-center col-span-full">No products found for selected filters.</p>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredProducts.map(product => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
+                filteredProducts.map(product => (
+                    <ProductCard key={product.id} product={product} />
+                ))
             )}
         </div>
     );

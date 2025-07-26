@@ -1,51 +1,96 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterByCategory, filterByRating } from '../redux/slices/productSlice';
+import {
+    filterByCategory,
+    filterByRating,
+    filterByPriceRange
+} from '../redux/slices/productSlice';
 
 const Sidebar = () => {
     const dispatch = useDispatch();
-    const { selectedCategory, selectedRating } = useSelector(state => state.products);
+    const selectedRating = useSelector((state) => state.products.selectedRating);
+    const selectedPriceRange = useSelector((state) => state.products.selectedPriceRange);
 
-    const categories = ['Electronics', 'Apparel', 'Books'];
-    const ratings = [3, 4, 5];
+    const [price, setPrice] = useState(selectedPriceRange[1] || 500);
+
+    const categories = ['All', 'Electronics', 'Books', 'Apparel'];
+    const ratings = [5, 4, 3];
+
+    const handleCategoryChange = (category) => {
+        dispatch(filterByCategory(category === 'All' ? '' : category));
+    };
+
+    const handleRatingChange = (rating) => {
+        dispatch(filterByRating(rating));
+    };
+
+    const clearRatingFilter = () => {
+        dispatch(filterByRating(3));
+    };
+
+    const handlePriceChange = (e) => {
+        const newPrice = parseInt(e.target.value);
+        setPrice(newPrice);
+        dispatch(filterByPriceRange([0, newPrice]));
+    };
 
     return (
-        <div className="w-72 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg h-fit sticky top-4 transition-colors duration-200">
-            <div className="mb-6">
-                <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Filter by Category</h3>
-                <ul className="space-y-2">
-                    {categories.map(category => (
-                        <li
-                            key={category}
-                            className={`cursor-pointer p-2 rounded-md transition-all ${selectedCategory === category
-                                    ? 'bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 font-semibold'
-                                    : 'hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300'
-                                }`}
-                            onClick={() => dispatch(filterByCategory(category))}
+        <div className="bg-slate-800 text-white w-full p-4 rounded-lg shadow-md space-y-6">
+            <h2 className="text-xl font-bold border-b pb-2">Filters</h2>
+
+            {/* Category Filter */}
+            <div>
+                <h3 className="text-lg font-semibold mb-2">Category</h3>
+                <div className="flex flex-wrap gap-2">
+                    {categories.map((cat) => (
+                        <button
+                            key={cat}
+                            onClick={() => handleCategoryChange(cat)}
+                            className="bg-slate-700 hover:bg-slate-600 text-sm px-3 py-1 rounded"
                         >
-                            {category}
-                        </li>
+                            {cat}
+                        </button>
                     ))}
-                </ul>
+                </div>
             </div>
 
-            <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Filter by Rating</h3>
-                <ul className="space-y-2">
-                    {ratings.map(rating => (
-                        <li
-                            key={rating}
-                            className={`cursor-pointer p-2 rounded-md transition-all flex items-center gap-2 ${selectedRating === rating
-                                    ? 'bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 font-semibold'
-                                    : 'hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300'
-                                }`}
-                            onClick={() => dispatch(filterByRating(rating))}
-                        >
-                            <span>{rating}+ </span>
-                            <span className="text-yellow-400">{'★'.repeat(rating)}{'☆'.repeat(5 - rating)}</span>
-                        </li>
+            {/* Rating Filter */}
+            <div>
+                <h3 className="text-lg font-semibold mb-2">Rating</h3>
+                <div className="space-y-1 text-sm">
+                    {ratings.map((rate) => (
+                        <label key={rate} className="flex items-center gap-2">
+                            <input
+                                type="radio"
+                                name="rating"
+                                value={rate}
+                                checked={selectedRating === rate}
+                                onChange={() => handleRatingChange(rate)}
+                            />
+                            <span>{rate} Stars & above</span>
+                        </label>
                     ))}
-                </ul>
+                </div>
+                <button
+                    onClick={clearRatingFilter}
+                    className="mt-2 text-xs text-blue-400 hover:underline"
+                >
+                    Clear Rating Filter
+                </button>
+            </div>
+
+            {/* Price Filter */}
+            <div>
+                <h3 className="text-lg font-semibold mb-2">Max Price: <span className="text-green-400">₹{price}</span></h3>
+                <input
+                    type="range"
+                    min="0"
+                    max="500"
+                    step="1"
+                    value={price}
+                    onChange={handlePriceChange}
+                    className="w-full accent-red-500"
+                />
             </div>
         </div>
     );
