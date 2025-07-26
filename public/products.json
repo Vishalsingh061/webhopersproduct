@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Wireless Mouse",
+        "price": 25,
+        "category": "Electronics",
+        "rating": 4,
+        "image": "https://via.placeholder.com/150"
+    },
+    {
+        "id": 2,
+        "name": "Hoodie",
+        "price": 40,
+        "category": "Apparel",
+        "rating": 3,
+        "image": "https://via.placeholder.com/150"
+    },
+    {
+        "id": 3,
+        "name": "JavaScript Book",
+        "price": 15,
+        "category": "Books",
+        "rating": 5,
+        "image": "https://via.placeholder.com/150"
+    },
+    {
+        "id": 4,
+        "name": "Smartphone",
+        "price": 499,
+        "category": "Electronics",
+        "rating": 4,
+        "image": "https://via.placeholder.com/150"
+    },
+    {
+        "id": 5,
+        "name": "Bluetooth Speaker",
+        "price": 75,
+        "category": "Electronics",
+        "rating": 5,
+        "image": "https://via.placeholder.com/150"
+    },
+    {
+        "id": 6,
+        "name": "Novel - The Alchemist",
+        "price": 20,
+        "category": "Books",
+        "rating": 4,
+        "image": "https://via.placeholder.com/150"
+    },
+    {
+        "id": 7,
+        "name": "T-Shirt",
+        "price": 18,
+        "category": "Apparel",
+        "rating": 3,
+        "image": "https://via.placeholder.com/150"
+    },
+    {
+        "id": 8,
+        "name": "Headphones",
+        "price": 89,
+        "category": "Electronics",
+        "rating": 4,
+        "image": "https://via.placeholder.com/150"
+    },
+    {
+        "id": 9,
+        "name": "Winter Jacket",
+        "price": 120,
+        "category": "Apparel",
+        "rating": 5,
+        "image": "https://via.placeholder.com/150"
+    },
+    {
+        "id": 10,
+        "name": "Cookbook - Italian Recipes",
+        "price": 22,
+        "category": "Books",
+        "rating": 3,
+        "image": "https://via.placeholder.com/150"
+    }
+]
