@@ -1,5 +1,10 @@
 <h1>📦 Product Explorer</h1>
 
+<h2>🚀 Live Demo</h2>
+<p>You can check out the live project here:</p>
+<a href="https://webhopersproductexplorer.netlify.app/" target="_blank">🌐 https://webhopersproductexplorer.netlify.app/</a>
+
+
 <p>
 A modern <strong>React.js</strong> application for filtering products dynamically based on multiple criteria like category, price range, and rating. Built using <strong>Vite</strong>, <strong>Redux Toolkit</strong>, and <strong>Tailwind CSS</strong>, this app is fast, responsive, and features both light and dark themes.
 </p>
