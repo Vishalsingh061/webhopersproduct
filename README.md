@@ -1,4 +1,65 @@
+A modern React.js application for filtering products dynamically based on multiple criteria like category, price range, and rating. Built using Vite, Redux Toolkit, and Tailwind CSS, this app is fast, responsive, and features both light and dark themes.
 
+🛠️ Tech Stack Used
+React.js (Functional components + Hooks)
+
+Redux Toolkit (State management)
+
+Vite (Fast build tool)
+
+Tailwind CSS (Utility-first styling)
+
+JavaScript (ES6+)
+
+✅ Features Implemented
+🔄 Dynamic Filtering
+By Category (e.g., Electronics, Books, Apparel)
+
+By Price Range (Using slider or input)
+
+By Rating (Star-based filtering)
+
+📦 Reusable Components
+ProductCard – For displaying each product
+
+Sidebar – Filter controls
+
+Navbar, ThemeToggle, etc.
+
+⚙️ Redux Toolkit Store Setup
+Centralized state for filters and products
+
+Simple and scalable logic
+
+Easy debugging and maintainability
+
+🎨 Responsive & Clean UI
+Tailwind CSS ensures responsive and consistent design
+
+Fully mobile-friendly layout
+
+Modern and elegant design
+
+🌗 Light and Dark Theme Support
+Toggle between Light and Dark mode
+
+Remembers user’s preference
+
+🧠 Performance Optimization
+Uses React.memo, useMemo, and useCallback
+
+Optimized component re-renders
+
+Lightweight and scalable
+
+📁 Folder Structure
+├── public/
+├── src/
+│   ├── app/              # Redux store configuration
+│   ├── components/       # Reusable UI components
+│   ├── features/         # Redux slices and logic
+│   ├── pages/            # Page-level components
+│   └── index.js          # Entry point
 🚀 How to Run the App
 1. Clone or Download the Project
 bash
@@ -6,7 +67,7 @@ Copy
 Edit
 git clone https://github.com/your-username/product-filter-app.git
 cd product-filter-app
-If you're using a ZIP file, extract it and open the folder in your terminal or code editor.
+If using a ZIP file, extract it and open the folder in your terminal/code editor.
 
 2. Install Dependencies
 bash
@@ -18,63 +79,9 @@ bash
 Copy
 Edit
 npm run dev
-This will start the app on http://localhost:5173.
-
-🛠️ Tech Stack Used
-React.js (with functional components and hooks)
-
-Redux Toolkit (for state management)
-
-Tailwind CSS (for utility-first styling)
-
-Vite (for blazing-fast development experience)
-
-JavaScript (ES6+)
-
-✅ Features Implemented
-🔄 Dynamic Filtering
-
-By Category (e.g., Electronics, Books, Apparel)
-
-By Price Range (Slider/Range Filter)
-
-By Rating (Star Ratings)
-
-📦 Reusable Components
-
-ProductCard for product UI
-
-Sidebar for filter controls
-
-⚙️ Redux Toolkit Store Setup
-
-Centralized filter and product state
-
-Easy debugging and state traceability
-
-🧠 Optimized Performance
-
-Usage of React.memo, useMemo, and useCallback
-
-Lightweight rendering with efficient re-renders
-
-🎨 Responsive & Clean UI
-
-TailwindCSS ensures consistency and responsiveness
-
-Mobile-friendly and elegant layout
-
-📁 Well-Organized Folder Structure
-
-components/, features/, pages/, app/
+The app will be running at:
+👉 http://localhost:5173
 
 ⏱ Time Taken
-2-3 hours total 
-
-Project setup with Vite & Tailwind: ~20 mins
-
-Redux state configuration: half hour
-
-UI Development: 1 hour
-
-Debugging, Optimizing, README: ~1 hour
+Task	Time
+Component and Feature Development	~2–3 hours
