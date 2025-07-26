@@ -1,13 +1,16 @@
 import React from 'react';
-import ProductList from './components/ProductList';
-import Sidebar from './components/Sidebar';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from './context/ThemeContext';
+import store from './redux/store';
+import Home from './pages/Home';
 
 const App = () => {
   return (
-    <div className="min-h-screen p-4 flex gap-6 bg-gray-100">
-      <Sidebar />
-      <ProductList />
-    </div>
+    <Provider store={store}>
+      <ThemeProvider>
+        <Home />
+      </ThemeProvider>
+    </Provider>
   );
 };
 
